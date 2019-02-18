@@ -1,0 +1,106 @@
+/* Définition des polices personnalisées */
+
+@font-face {
+    font-family: 'abhaya_libreregular';
+    src: url('polices/AbhayaLibre-Regular-webfont.eot');
+    src: url('polices/AbhayaLibre-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('polices/AbhayaLibre-Regular-webfont.woff2') format('woff2'),
+         url('polices/AbhayaLibre-Regular-webfont.woff') format('woff'),
+         url('polices/AbhayaLibre-Regular-webfont.ttf') format('truetype'),
+         url('polices/AbhayaLibre-Regular-webfont.svg#abhaya_libreregular') format('svg');
+}
+
+/* Eléments principaux de la page */
+
+html,body
+{
+	height: 100%; /* pour que le liseré ne s'arrête pas en bas du texte*/
+	margin: 0;
+}
+
+#bloc_page
+{
+	display: flex;
+	height: 100%;
+}
+
+#lisere
+{
+	background: url('images/lisere.png') repeat-y;
+	width: 8%;
+}
+
+#bloc_principal
+{
+	width: 100%;
+	margin-top: 30px;
+}
+
+@media all and (max-width: 1024px) /* Expérience sur petit écran */
+{
+	#lisere
+	{
+		display: none;
+	}
+}
+
+/* Header */
+
+header
+{
+	display: flex;
+	justify-content: center;
+	margin: auto;
+}
+
+
+#photo /* La première boîte, qui contient la photo alignée à droite */
+{
+	flex: 1;
+	text-align: right;
+}
+
+#texte_header /* Une deuxième boîte, qui contient le texte */
+{
+	text-align: center;
+	padding: 5px;
+}
+
+#droite_du_header /* Une troisième boîte, vide, qui a la même largeur que la 1ère pour que le texte soit centré */
+{
+	flex: 1;
+}
+
+/* Partie principale du cv (avec l'expérience, la formation...) */
+
+#cv
+{
+	display: flex;
+	justify-content: space-around;
+	margin: 0px 0px 10px 20px;
+}
+
+section
+{
+	flex: 1;
+	padding: 30px;
+}
+
+section h2
+{
+	color: blue;
+	font-family: abhaya_libreregular, serif;
+	text-shadow: 2px 2px 2px blue;
+}
+
+@media all and (max-width: 1024px) /* Expérience sur petit écran */
+{
+	#cv
+	{
+		flex-direction: column;
+	}
+	section
+	{
+		padding: 15px;
+	}
+}
