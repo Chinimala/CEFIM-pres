@@ -65,7 +65,7 @@ aside
 	margin-left: 3%;
 	overflow: auto; /*Permet de pouvoir scroll en hauteur*/
 	height: 100%;
-	word-break: break-word;
+	word-wrap: break-word;
 }
 
 aside h1
