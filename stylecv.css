@@ -1,106 +1,199 @@
-/* Définition des polices personnalisées */
-
-@font-face {
-    font-family: 'abhaya_libreregular';
-    src: url('polices/AbhayaLibre-Regular-webfont.eot');
-    src: url('polices/AbhayaLibre-Regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('polices/AbhayaLibre-Regular-webfont.woff2') format('woff2'),
-         url('polices/AbhayaLibre-Regular-webfont.woff') format('woff'),
-         url('polices/AbhayaLibre-Regular-webfont.ttf') format('truetype'),
-         url('polices/AbhayaLibre-Regular-webfont.svg#abhaya_libreregular') format('svg');
-}
+/* Style du CV/présentation de 02/2019*/
 
 /* Eléments principaux de la page */
 
-html,body
-{
-	height: 100%; /* pour que le liseré ne s'arrête pas en bas du texte*/
-	margin: 0;
-}
 
 #bloc_page
 {
-	display: flex;
-	height: 100%;
+	display: flex; /*Contient aside et cv*/
+	font-family: arial, serif;
+	text-align: center;
+	margin-bottom: 40px;
 }
 
-#lisere
-{
-	background: url('images/lisere.png') repeat-y;
-	width: 8%;
+p, ul
+{	
+	line-height: 22px; /*Interlignes, rend le texte plus facile à lire*/
+	list-style-position: inside; /*Colle les puces au texte*/
 }
 
-#bloc_principal
+h1, h2, h3
 {
-	width: 100%;
-	margin-top: 30px;
+	text-transform: uppercase;
+	font-weight: normal;	
 }
 
-@media all and (max-width: 1024px) /* Expérience sur petit écran */
+h2
 {
-	#lisere
-	{
-		display: none;
-	}
+	border-top: 1px rgb(72, 187, 180) solid;
+	border-bottom: 1px rgb(72, 187, 180) solid;
+	padding: 10px;
+	margin-top: 35px;
 }
 
-/* Header */
-
-header
+strong /*Intitulés des parties formation et expérience*/
 {
-	display: flex;
-	justify-content: center;
-	margin: auto;
+	text-transform: uppercase;	
 }
 
-
-#photo /* La première boîte, qui contient la photo alignée à droite */
+address
 {
-	flex: 1;
 	text-align: right;
 }
 
-#texte_header /* Une deuxième boîte, qui contient le texte */
+@media all and (max-width: 1150px) /*Expérience sur petit écran*/
 {
-	text-align: center;
-	padding: 5px;
-}
-
-#droite_du_header /* Une troisième boîte, vide, qui a la même largeur que la 1ère pour que le texte soit centré */
-{
-	flex: 1;
-}
-
-/* Partie principale du cv (avec l'expérience, la formation...) */
-
-#cv
-{
-	display: flex;
-	justify-content: space-around;
-	margin: 0px 0px 10px 20px;
-}
-
-section
-{
-	flex: 1;
-	padding: 30px;
-}
-
-section h2
-{
-	color: blue;
-	font-family: abhaya_libreregular, serif;
-	text-shadow: 2px 2px 2px blue;
-}
-
-@media all and (max-width: 1024px) /* Expérience sur petit écran */
-{
-	#cv
+	#bloc_page
 	{
 		flex-direction: column;
 	}
-	section
+}
+
+/* Aside */
+
+aside
+{
+	flex: 1; /*Ne sert qu'à définir la largeur de la colonne cv*/
+	margin-right: 5%; /*Ecart entre les deux colonnes*/
+}
+
+#aside-wrapper /*Pour avoir le position: fixed tout en gardant les flexbox*/
+{
+	position: fixed;
+	top: 40px;
+	width: 20%;
+	margin-left: 3%;
+	overflow: auto; /*Permet de pouvoir scroll en hauteur*/
+	height: 100%;
+	word-break: break-word;
+}
+
+aside h1
+{
+	margin-bottom: 10px;
+	margin-top: 0;
+	font-size: 2em;
+}
+
+aside h3
+{
+	margin-top: 0;
+	margin-bottom: 12px;
+}
+
+aside section, h1
+{
+	border-top: 1px rgb(72, 187, 180) solid;
+	padding: 20px 0 5px 0;
+}
+
+aside ul
+{
+	list-style-type: none;
+	padding-left: 0;
+}
+
+aside section hr /* Les petits séparateurs*/
+{
+	border-color: rgb(72, 187, 180);
+	border-width: 0.5px;
+	width: 10%;
+}
+
+aside section p:first-child /*Si une section commence directement par un p...*/
+{
+	margin-top: 0; /*...on évite une marge en trop*/
+}
+
+@media all and (max-width: 1150px) /*Expérience sur petit écran*/
+{
+	#aside-wrapper /*Annulation du position: fixed et de la largeur relative*/
 	{
-		padding: 15px;
+		position: static;
+		width: auto;
 	}
+	
+	#coordonnees /*Le mail et le téléphone sur une ligne*/
+	{
+		display: flex;
+		justify-content: space-around;
+	}
+	
+	aside section p /*Le mail et le téléphone à la même hauteur*/
+	{
+		margin-top: initial;
+	}
+	
+	#competences
+	{
+		display: flex;
+		justify-content: space-around;
+	}
+	
+	aside section hr
+	{
+		display: none;
+	}
+	
+}
+	
+/* CV */
+
+#cv
+{
+	flex: 3;
+	margin-right: 3%;
+}
+
+#cv strong::after /*Saut à la ligne après un intitulé en gras*/
+{
+	content: "\A";
+	white-space: pre;
+}
+
+#cv p
+{
+	margin: 30px; /*Eclaircit le texte avec plus d'espace entre les p*/
+}
+
+#cv li
+{
+	margin: 5px;
+}
+
+/*Images sur liens en pointillés dans CV*/
+
+#cv a, a:link, a:visited
+{
+	color: black;
+}
+
+#cv .imglink
+{
+	border-bottom: 1px black dotted;
+	text-decoration: none;
+}
+
+#cv .img
+{
+	display: none;
+}
+
+#cv a:hover .img
+{
+	display: block;
+}
+
+#cv img
+{
+	max-height: 500px;
+	max-width: 500px;
+	margin: 5px;
+	border: 1px rgb(72, 187, 180) dotted;
+}
+#cv .bigimg
+{
+	margin: 20px;
+	border-width: 5px;
+	border-style: ridge;
 }
